@@ -16,10 +16,10 @@ public class FindEmployeeCommand extends Command {
     public static final String COMMAND_WORD = "finde";
 
     public static final String MESSAGE_USAGE = CommandUtil.formatCommandWord(COMMAND_WORD)
-            + ": Finds all employees that contain any of "
+            + ": Finds all employees that contain "
             + "the specified keywords (case-insensitive) and displays them as a list with index numbers.\n"
             + "Parameters: KEYWORD [MORE_KEYWORDS]...\n"
-            + "Example: " + CommandUtil.formatCommandWord(COMMAND_WORD) + " alice 14 days $1200";
+            + "Example: " + CommandUtil.formatCommandWord(COMMAND_WORD) + " 2021-12-08 0800";
 
     private final EmployeeClassContainsKeywordsPredicate predicate;
 

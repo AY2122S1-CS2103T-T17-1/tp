@@ -18,24 +18,24 @@ public class EmployeeClassContainsKeywordsPredicate implements Predicate<Employe
     @Override
     public boolean test(Employee employee) {
         return keywords.stream()
-                .anyMatch(keyword ->
-                        StringUtil.containsSubstringIgnoreCase(
+                .allMatch(keyword ->
+                        StringUtil.containsSubstringNotSingleWordIgnoreCase(
                                 employee.getName().fullName, keyword)
-                                || StringUtil.containsSubstringIgnoreCase(
+                                || StringUtil.containsSubstringNotSingleWordIgnoreCase(
                                 employee.getEmail().value, keyword)
-                                || StringUtil.containsSubstringIgnoreCase(
+                                || StringUtil.containsSubstringNotSingleWordIgnoreCase(
                                 employee.getPhone().value, keyword)
-                                || StringUtil.containsSubstringIgnoreCase(
+                                || StringUtil.containsSubstringNotSingleWordIgnoreCase(
                                 employee.getAddress().value, keyword)
-                                || StringUtil.containsSubstringIgnoreCase(
+                                || StringUtil.containsSubstringNotSingleWordIgnoreCase(
                                 employee.getLeaves().currentLeaves, keyword)
-                                || StringUtil.containsSubstringIgnoreCase(
+                                || StringUtil.containsSubstringNotSingleWordIgnoreCase(
                                 employee.getJobTitle().jobTitle, keyword)
-                                || StringUtil.containsSubstringIgnoreCase(
+                                || StringUtil.containsSubstringNotSingleWordIgnoreCase(
                                 employee.getSalary().currentSalary, keyword)
-                                || StringUtil.containsSubstringIgnoreCase(
+                                || StringUtil.containsSubstringNotSingleWordIgnoreCase(
                                 employee.getShifts().toString(), keyword)
-                                || StringUtil.containsSubstringIgnoreCase(
+                                || StringUtil.containsSubstringNotSingleWordIgnoreCase(
                                 employee.getTags().toString(), keyword)
                 );
     }

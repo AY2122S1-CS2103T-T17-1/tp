@@ -60,6 +60,29 @@ public class StringUtil {
         String preppedSentence = sentence;
         return preppedSentence.toLowerCase().contains(preppedWord.toLowerCase());
     }
+
+    /**
+     * Returns true if the {@code sentence} contains the {@code substring}.
+     *   Ignores case, only requires a partial match in any fields.
+     *   <br>examples:<pre>
+     *       containsSubstringIgnoreCase("ABc def", "abc") == true
+     *       containsSubstringIgnoreCase("ABc def", "DEF") == true
+     *       containsSubstringIgnoreCase("ABc def", "AB") == true
+     *       </pre>
+     * @param sentence cannot be null
+     * @param word cannot be null, cannot be empty, can be single word
+     */
+    public static boolean containsSubstringNotSingleWordIgnoreCase(String sentence, String word) {
+        requireNonNull(sentence);
+        requireNonNull(word);
+
+        String preppedWord = word.trim();
+        checkArgument(!preppedWord.isEmpty(), "Word parameter cannot be empty");
+
+        String preppedSentence = sentence;
+        return preppedSentence.toLowerCase().contains(preppedWord.toLowerCase());
+    }
+
     /**
      * Returns a detailed message of the t, including the stack trace.
      */
