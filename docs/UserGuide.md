@@ -120,7 +120,7 @@ This is the list of all prefixes used in RHRH, as well as their corresponding pa
 
 Shows a message explaining how to access the help page.
 
-![help message](/images/helpMessage.png)
+![help message](images/helpMessage.png)
 
 Format: `help`
 
@@ -391,8 +391,8 @@ Format: `editR INDEX [r/REMARK] [t/TAG]…`
 
 Examples:
 
-- `editS 1 p/91234567 st/Beef` Edits the phone number and supply type of the 1st supplier to be `91234567` and `Beef` respectively.
-- `editS 2 n/Betsy Crower t/` Edits the name of the 2nd supplier to be `Betsy Crower` and clears all existing tags.
+- `editR 1 r/birthday party t/10Percent Off` Edits remark and tags of the 1st reservation to `birthday party` and `10Percent Off` respectively.
+- `editS 2 r/ t/` Clears all existing remark and tags of the 2nd reservation.
 
 ---
 
