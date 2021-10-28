@@ -303,6 +303,7 @@ Examples:
 - `check 1800`
 
 <div markdown="block" class="alert alert-warning">
+
 :information_source: **Notes:**<br>
 
 - Time has to be formatted on the hour (i.e. minutes of the time is **00**)
@@ -312,8 +313,10 @@ Examples:
 ### Setting the tables for the restaurant: `settables`
 
 <div markdown="block" class="alert alert-danger">
+
 :bangbang: **Warning!**<br>
 This command will remove **ALL** reservations and overwrite previously set tables <br>
+
 </div>
 
 Sets the tables with the sizes specified so that reservations can be made
@@ -330,6 +333,7 @@ Examples:
 - `settables 10,8,8,4,4,2x6,1x4`
 
 <div markdown="block" class="alert alert-warning">
+
 :information_source: **Notes:**<br>
 
 - Size of tables and Number of tables with specified size has to be a positive integer
@@ -351,6 +355,7 @@ Examples:
 - `addr 5 p/12345668 at/2021-02-14 1200 r/have kids`
 
 <div markdown="block" class="alert alert-warning">
+
 :information_source: **Notes:**<br>
 
 - Tables must be set before reservations can be made. See [settables](#setting-the-tables-for-the-restaurant-settables)
@@ -442,8 +447,11 @@ RHRH data are saved in the hard disk automatically after any command that change
 
 RHRH data are saved as a JSON file `[JAR file location]/data/addressbook.json`. Advanced users are welcome to update data directly by editing that data file.
 
-<div markdown="span" class="alert alert-warning">:exclamation: **Caution:**
+<div markdown="span" class="alert alert-warning">
+
+:bangbang: **Caution:**
 If your changes to the data file makes its format invalid, RHRH will discard all data and start with an empty data file at the next run.
+
 </div>
 
 ---
