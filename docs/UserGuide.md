@@ -5,8 +5,7 @@ title: User Guide
 
 Restaurant HR Helper (RHRH) is a **desktop app for managing restaurant contacts including employees, suppliers and customers, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, RHRH can get your contact management tasks done faster than traditional GUI apps.
 
-- Table of Contents
-- {:toc}
+- Table of Contents {:toc}
 
 ---
 
