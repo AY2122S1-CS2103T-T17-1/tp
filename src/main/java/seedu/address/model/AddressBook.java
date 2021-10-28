@@ -83,6 +83,14 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     /**
+     * Sets the employee comparator to sort the employee list.
+     * @param employeeComparator The comparator to sort the employee list.
+     */
+    public void setEmployeeComparator(Comparator<Employee> employeeComparator) {
+        employees.setComparator(employeeComparator);
+    }
+
+    /**
      * Replaces the contents of the customer list with {@code customers}.
      * {@code customers} must not contain duplicate customers.
      */
@@ -204,7 +212,21 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     /**
-     * Returns a sortable supplier list
+     * Returns a sortable employee list
+     */
+    public ObservableList<Employee> getSortableEmployeeList() {
+        return employees.asSortableObservableList();
+    }
+
+    /**
+     * Resets the employee list sorting to its default state.
+     */
+    public void resetEmployeeListToDefaultSortState() {
+        employees.resetEmployeeListToDefaultSortState();
+    }
+
+    /**
+     * Returns a sortable supplier list`
      */
     public ObservableList<Supplier> getSortableSupplierList() {
         return suppliers.asSortableObservableList();

@@ -34,6 +34,7 @@ public class ModelManager implements Model {
     private final ObservableList<Customer> sortableCustomers;
     private final FilteredList<Employee> filteredEmployees;
     private final FilteredList<Supplier> filteredSuppliers;
+    private final ObservableList<Employee> sortableEmployees;
     private final ObservableList<Supplier> sortableSuppliers;
     private final FilteredList<Reservation> filteredReservations;
     private final ReservationsManager reservationsManager;
@@ -54,6 +55,7 @@ public class ModelManager implements Model {
         sortableCustomers = this.addressBook.getSortableCustomerList();
         filteredEmployees = new FilteredList<>(this.addressBook.getEmployeeList());
         filteredSuppliers = new FilteredList<>(this.addressBook.getSupplierList());
+        sortableEmployees = this.addressBook.getSortableEmployeeList();
         sortableSuppliers = this.addressBook.getSortableSupplierList();
         filteredReservations = new FilteredList<>(this.addressBook.getReservationList());
         reservationsManager = this.addressBook.getReservationsManager();
@@ -185,6 +187,11 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public void setEmployeeComparator(Comparator<Employee> employeeComparator) {
+        this.addressBook.setEmployeeComparator(employeeComparator);
+    }
+
+    @Override
     public void setSupplier(Supplier target, Supplier editedSupplier) {
         requireAllNonNull(target, editedSupplier);
         addressBook.setSupplier(target, editedSupplier);
@@ -243,6 +250,16 @@ public class ModelManager implements Model {
     @Override
     public ObservableList<Employee> getFilteredEmployeeList() {
         return filteredEmployees;
+    }
+
+    @Override
+    public ObservableList<Employee> getSortableEmployeeList() {
+        return sortableEmployees;
+    }
+
+    @Override
+    public void resetEmployeeListToDefaultSortState() {
+        this.addressBook.resetEmployeeListToDefaultSortState();
     }
 
     @Override

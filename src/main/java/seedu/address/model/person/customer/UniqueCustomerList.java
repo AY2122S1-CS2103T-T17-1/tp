@@ -98,6 +98,7 @@ public class UniqueCustomerList implements Iterable<Customer> {
     public void setCustomers(UniqueCustomerList replacement) {
         requireNonNull(replacement);
         internalList.setAll(replacement.internalList);
+        internalList.sort(customerComparator);
     }
 
     /**
@@ -111,6 +112,7 @@ public class UniqueCustomerList implements Iterable<Customer> {
         }
 
         internalList.setAll(customers);
+        internalList.sort(customerComparator);
     }
 
     /**

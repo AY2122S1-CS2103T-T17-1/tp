@@ -175,6 +175,21 @@ public class AddEmployeeCommandTest {
         }
 
         @Override
+        public void setEmployeeComparator(Comparator<Employee> employeeComparator) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ObservableList<Employee> getSortableEmployeeList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void resetEmployeeListToDefaultSortState() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public boolean hasReservation(Reservation reservation) {
             throw new AssertionError("This method should not be called.");
         }

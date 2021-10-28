@@ -32,9 +32,11 @@ import seedu.address.logic.commands.ListReservationCommand;
 import seedu.address.logic.commands.ListSupplierCommand;
 import seedu.address.logic.commands.ReserveCommand;
 import seedu.address.logic.commands.ResetCustomerSortCommand;
+import seedu.address.logic.commands.ResetEmployeeSortCommand;
 import seedu.address.logic.commands.ResetSupplierSortCommand;
 import seedu.address.logic.commands.SetTablesCommand;
 import seedu.address.logic.commands.SortCustomerCommand;
+import seedu.address.logic.commands.SortEmployeeCommand;
 import seedu.address.logic.commands.SortSupplierCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
@@ -140,17 +142,23 @@ public class AddressBookParser {
         case CheckCommand.COMMAND_WORD:
             return new CheckCommandParser().parse(arguments);
 
+        case SortEmployeeCommand.COMMAND_WORD:
+            return new SortEmployeeCommandParser().parse(arguments);
+
         case SortSupplierCommand.COMMAND_WORD:
             return new SortSupplierCommandParser().parse(arguments);
 
         case SortCustomerCommand.COMMAND_WORD:
             return new SortCustomerCommandParser().parse(arguments);
 
-        case ResetSupplierSortCommand.COMMAND_WORD:
-            return new ResetSupplierSortCommand();
-
         case ResetCustomerSortCommand.COMMAND_WORD:
             return new ResetCustomerSortCommand();
+
+        case ResetEmployeeSortCommand.COMMAND_WORD:
+            return new ResetEmployeeSortCommand();
+
+        case ResetSupplierSortCommand.COMMAND_WORD:
+            return new ResetSupplierSortCommand();
 
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);

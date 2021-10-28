@@ -25,6 +25,7 @@ import seedu.address.model.person.employee.JobTitle;
 import seedu.address.model.person.employee.Leaves;
 import seedu.address.model.person.employee.Salary;
 import seedu.address.model.person.employee.Shift;
+import seedu.address.model.person.employee.SortByEmployee;
 import seedu.address.model.person.supplier.DeliveryDetails;
 import seedu.address.model.person.supplier.SortBySupplier;
 import seedu.address.model.person.supplier.SupplyType;
@@ -352,6 +353,21 @@ public class ParserUtil {
             throw new ParseException(SortOrder.MESSAGE_CONSTRAINTS);
         }
         return new SortOrder(trimmedSortingOrder);
+    }
+
+    /**
+     * Parses a {@code String sortBy} into a {@code SortBy}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code} is invalid.
+     */
+    public static SortByEmployee parseSortByEmployee(String sortBy) throws ParseException {
+        requireNonNull(sortBy);
+        String trimmedSortBy = sortBy.trim().toLowerCase();
+        if (!SortByEmployee.isValidSortingOrder(trimmedSortBy)) {
+            throw new ParseException(SortByEmployee.MESSAGE_CONSTRAINTS);
+        }
+        return new SortByEmployee(trimmedSortBy);
     }
 
     /**

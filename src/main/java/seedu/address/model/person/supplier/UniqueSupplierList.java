@@ -87,6 +87,7 @@ public class UniqueSupplierList implements Iterable<Supplier> {
     public void setSuppliers(seedu.address.model.person.supplier.UniqueSupplierList replacement) {
         requireNonNull(replacement);
         internalList.setAll(replacement.internalList);
+        internalList.sort(supplierComparator);
     }
 
     /**
@@ -100,6 +101,7 @@ public class UniqueSupplierList implements Iterable<Supplier> {
         }
 
         internalList.setAll(suppliers);
+        internalList.sort(supplierComparator);
     }
 
     /**

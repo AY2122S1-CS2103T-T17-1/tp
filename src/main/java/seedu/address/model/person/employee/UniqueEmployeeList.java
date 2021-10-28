@@ -3,6 +3,7 @@ package seedu.address.model.person.employee;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 
@@ -27,6 +28,7 @@ public class UniqueEmployeeList implements Iterable<Employee> {
     private final ObservableList<Employee> internalList = FXCollections.observableArrayList();
     private final ObservableList<Employee> internalUnmodifiableList =
             FXCollections.unmodifiableObservableList(internalList);
+    private Comparator<Employee> employeeComparator = EmployeeComparator.getDefaultComparator();
 
     /**
      * Returns true if the list contains an equivalent employee as the given argument.
@@ -66,6 +68,7 @@ public class UniqueEmployeeList implements Iterable<Employee> {
         }
 
         internalList.set(index, editedEmployee);
+        internalList.sort(employeeComparator);
     }
 
     /**
@@ -77,11 +80,13 @@ public class UniqueEmployeeList implements Iterable<Employee> {
         if (!internalList.remove(toRemove)) {
             throw new EmployeeNotFoundException();
         }
+        internalList.sort(employeeComparator);
     }
 
     public void setEmployees(UniqueEmployeeList replacement) {
         requireNonNull(replacement);
         internalList.setAll(replacement.internalList);
+        internalList.sort(employeeComparator);
     }
 
     /**
@@ -95,6 +100,14 @@ public class UniqueEmployeeList implements Iterable<Employee> {
         }
 
         internalList.setAll(employees);
+        internalList.sort(employeeComparator);
+    }
+
+    /**
+     * Resets the employee list to its default sorting state.
+     */
+    public void resetEmployeeListToDefaultSortState() {
+        internalList.sort(EmployeeComparator.getDefaultComparator());
     }
 
     /**
@@ -102,6 +115,21 @@ public class UniqueEmployeeList implements Iterable<Employee> {
      */
     public ObservableList<Employee> asUnmodifiableObservableList() {
         return internalUnmodifiableList;
+    }
+
+    /**
+     * Returns the backing list as a sortable {@code ObservableList}.
+     */
+    public ObservableList<Employee> asSortableObservableList() {
+        return internalList;
+    }
+
+    public void setComparator(Comparator<Employee> comparator) {
+        employeeComparator = comparator;
+    }
+
+    public Comparator<Employee> getComparator() {
+        return employeeComparator;
     }
 
     @Override

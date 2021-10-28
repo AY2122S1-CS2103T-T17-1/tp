@@ -75,25 +75,25 @@ public class SampleDataUtil {
     public static Employee[] getSampleEmployees() {
         return new Employee[] {
             new Employee(new Name("Javier Phon"), new Phone("81234567"), new Email("javphon@example.com"),
-                    new Address("Blk 5 Bukit Batok St 2, #177-35"), getTagSet("Chef"), new Leaves("14"),
-                    new Salary("8000"), new JobTitle("Head Chef"),
-                    getShiftSet("2020-12-04 0800", "2020-12-05 1600", "2020-12-07 0800")),
+                    new Address("Blk 5 Bukit Batok St 2, #177-35"), getTagSet("Managerial", "Team B"),
+                    new Leaves("14"), new Salary("8000"), new JobTitle("Head Chef"),
+                    getShiftSet("2021-12-04 0800", "2021-12-05 0800", "2021-12-07 1700")),
             new Employee(new Name("Chetwin Low"), new Phone("85555555"), new Email("chetlqh@example.com"),
-                    new Address("Blk 7 Yew Tee St 10, #10-35"), getTagSet("New"), new Leaves("10"),
-                    new Salary("1200"), new JobTitle("Dishwasher"),
-                        getShiftSet("2020-12-04 0800", "2020-12-05 0800", "2020-12-06 1600")),
+                    new Address("Blk 7 Yew Tee St 10, #10-35"), getTagSet("Intern", "Team B"), new Leaves("10"),
+                    new Salary("1200"), new JobTitle("Waiter"),
+                        getShiftSet("2021-12-04 0800", "2021-12-05 0800", "2021-12-07 1700")),
             new Employee(new Name("Clement Kong"), new Phone("99999999"), new Email("clementk@example.com"),
-                    new Address("Blk 20 Bishan St 37, #03-10"), getTagSet("Old", "Myself"), new Leaves("14"),
-                    new Salary("7700"), new JobTitle("Manager"),
-                    getShiftSet("2020-12-05 0800", "2020-12-06 1600", "2020-12-08 0800")),
+                    new Address("Blk 20 Bishan St 37, #03-10"), getTagSet("Managerial"), new Leaves("14"),
+                    new Salary("7700"), new JobTitle("Branch Manager"),
+                    getShiftSet("2021-12-05 0800", "2021-12-06 1700", "2021-12-08 0800")),
             new Employee(new Name("Pham Ba Thang"), new Phone("82974023"), new Email("pham@example.com"),
-                    new Address("Blk 17 Bukit Gombat St 20, #01-02"), getTagSet("Talent"), new Leaves("14"),
-                    new Salary("6000"), new JobTitle("Sous Chef"),
-                    getShiftSet("2020-12-07 0800", "2020-12-08 1600", "2020-12-09 0800")),
+                    new Address("Blk 17 Bukit Gombat St 20, #01-02"), getTagSet("Team lead", "Team A"),
+                    new Leaves("14"), new Salary("6000"), new JobTitle("Head Sous Chef"),
+                    getShiftSet("2021-12-07 0800", "2021-12-08 1700", "2021-12-09 0800")),
             new Employee(new Name("Lee Hern Ping"), new Phone("90000000"), new Email("Leehp@example.com"),
-                    new Address("Blk 1 Seragoon St 3, #05-05"), getTagSet("Hardworker", "Handsome"),
+                    new Address("Blk 1 Seragoon St 3, #05-05"), getTagSet("Team A"),
                     new Leaves("14"), new Salary("5000"), new JobTitle("Waiter"),
-                    getShiftSet("2020-12-04 0800", "2020-12-05 1600"))
+                    getShiftSet("2021-12-07 0800", "2021-12-09 0800", "2021-12-08 1700"))
         };
     }
 
