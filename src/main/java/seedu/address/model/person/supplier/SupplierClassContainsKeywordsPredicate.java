@@ -19,7 +19,7 @@ public class SupplierClassContainsKeywordsPredicate implements Predicate<Supplie
     @Override
     public boolean test(Supplier supplier) {
         return keywords.stream()
-                .anyMatch(keyword ->
+                .allMatch(keyword ->
                          StringUtil.containsSubstringIgnoreCase(
                                  supplier.getName().fullName, keyword)
                                  || StringUtil.containsSubstringIgnoreCase(

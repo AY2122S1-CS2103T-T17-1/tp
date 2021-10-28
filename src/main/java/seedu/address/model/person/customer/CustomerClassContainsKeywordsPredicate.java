@@ -18,7 +18,7 @@ public class CustomerClassContainsKeywordsPredicate implements Predicate<Custome
     @Override
     public boolean test(Customer customer) {
         return keywords.stream()
-                .anyMatch(keyword ->
+                .allMatch(keyword ->
                     StringUtil.containsSubstringIgnoreCase(
                             customer.getName().fullName, keyword)
                             || StringUtil.containsSubstringIgnoreCase(

@@ -55,18 +55,12 @@ public class SupplierClassContainsKeywordsPredicateTest {
 
         // Only one matching keyword
         predicate = new SupplierClassContainsKeywordsPredicate(Arrays.asList("Bob", "Carol"));
-        assertTrue(predicate.test(new SupplierBuilder().withName("Alice Carol").build()));
+        assertFalse(predicate.test(new SupplierBuilder().withName("Alice Carol").build()));
 
         // Mixed-case keywords
         predicate = new SupplierClassContainsKeywordsPredicate(Arrays.asList("aLIce", "bOB", "fRiEnDs", "NoVEmBER"));
         assertTrue(predicate.test(new SupplierBuilder().withName("Alice Bob").withTags("friends")
                 .withDeliveryDetails("2021-11-19 15:00").build()));
-
-        // Keywords match phone, email and address, but does not match anything else
-        predicate = new SupplierClassContainsKeywordsPredicate(
-                Arrays.asList("12345", "alice@email.com", "Main", "Street", "Beef", "Feb", "Fish", "Regular"));
-        assertTrue(predicate.test(new SupplierBuilder().withName("Alice").withPhone("12345")
-                .withEmail("alice@email.com").withAddress("Main Street").build()));
     }
 
     @Test
@@ -74,7 +68,13 @@ public class SupplierClassContainsKeywordsPredicateTest {
         // Zero keywords
         SupplierClassContainsKeywordsPredicate predicate =
                 new SupplierClassContainsKeywordsPredicate(Collections.emptyList());
-        assertFalse(predicate.test(new SupplierBuilder().withName("Alice").build()));
+        assertTrue(predicate.test(new SupplierBuilder().withName("Alice").build()));
+
+        // Keywords match phone, email and address, but does not match anything else
+        predicate = new SupplierClassContainsKeywordsPredicate(
+                Arrays.asList("12345", "alice@email.com", "Main", "Street", "Beef", "Feb", "Fish", "Regular"));
+        assertFalse(predicate.test(new SupplierBuilder().withName("Alice").withPhone("12345")
+                .withEmail("alice@email.com").withAddress("Main Street").build()));
 
         // Non-matching keyword
         predicate = new SupplierClassContainsKeywordsPredicate(Arrays.asList("Carol", "Beef", "Jan", "Texas"));

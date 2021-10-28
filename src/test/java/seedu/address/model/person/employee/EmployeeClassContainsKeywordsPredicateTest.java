@@ -52,10 +52,6 @@ public class EmployeeClassContainsKeywordsPredicateTest {
         predicate = new EmployeeClassContainsKeywordsPredicate(Arrays.asList("Alice", "Bob"));
         assertTrue(predicate.test(new EmployeeBuilder().withName("Alice Bob").build()));
 
-        // Only one matching keyword
-        predicate = new EmployeeClassContainsKeywordsPredicate(Arrays.asList("Bob", "Carol"));
-        assertTrue(predicate.test(new EmployeeBuilder().withName("Alice Carol").build()));
-
         // Mixed-case keywords
         predicate = new EmployeeClassContainsKeywordsPredicate(Arrays.asList("aLIce", "bOB"));
         assertTrue(predicate.test(new EmployeeBuilder().withName("Alice Bob").build()));
@@ -65,14 +61,18 @@ public class EmployeeClassContainsKeywordsPredicateTest {
                 Arrays.asList("12345", "alice@email.com", "Main", "Street"));
         assertTrue(predicate.test(new EmployeeBuilder().withName("Alice").withPhone("12345")
                 .withEmail("alice@email.com").withAddress("Main Street").build()));
+
+        // Zero keywords
+        predicate = new EmployeeClassContainsKeywordsPredicate(Collections.emptyList());
+        assertTrue(predicate.test(new EmployeeBuilder().withName("Alice").build()));
     }
 
     @Test
     public void test_nameDoesNotContainKeywords_returnsFalse() {
-        // Zero keywords
+        // Only one matching keyword
         EmployeeClassContainsKeywordsPredicate predicate =
-                new EmployeeClassContainsKeywordsPredicate(Collections.emptyList());
-        assertFalse(predicate.test(new EmployeeBuilder().withName("Alice").build()));
+                new EmployeeClassContainsKeywordsPredicate(Arrays.asList("Bob", "Carol"));
+        assertFalse(predicate.test(new EmployeeBuilder().withName("Alice Carol").build()));
 
         // Non-matching keyword
         predicate = new EmployeeClassContainsKeywordsPredicate(Arrays.asList("Carol"));

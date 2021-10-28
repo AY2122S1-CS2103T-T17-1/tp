@@ -52,10 +52,6 @@ public class CustomerClassContainsKeywordsPredicateTest {
         predicate = new CustomerClassContainsKeywordsPredicate(Arrays.asList("Alice", "Bob"));
         assertTrue(predicate.test(new CustomerBuilder().withName("Alice Bob").build()));
 
-        // Only one matching keyword
-        predicate = new CustomerClassContainsKeywordsPredicate(Arrays.asList("Bob", "Carol"));
-        assertTrue(predicate.test(new CustomerBuilder().withName("Alice Carol").build()));
-
         // Mixed-case keywords
         predicate = new CustomerClassContainsKeywordsPredicate(Arrays.asList("aLIce", "bOB"));
         assertTrue(predicate.test(new CustomerBuilder().withName("Alice Bob").build()));
@@ -65,14 +61,18 @@ public class CustomerClassContainsKeywordsPredicateTest {
                 "alice@email.com", "Main", "Street"));
         assertTrue(predicate.test(new CustomerBuilder().withName("Alice").withPhone("12345")
                 .withEmail("alice@email.com").withAddress("Main Street").build()));
+
+        // Zero keywords
+        predicate = new CustomerClassContainsKeywordsPredicate(Collections.emptyList());
+        assertTrue(predicate.test(new CustomerBuilder().withName("Alice").build()));
     }
 
     @Test
     public void test_nameDoesNotContainKeywords_returnsFalse() {
-        // Zero keywords
+        // Only one matching keyword
         CustomerClassContainsKeywordsPredicate predicate =
-                new CustomerClassContainsKeywordsPredicate(Collections.emptyList());
-        assertFalse(predicate.test(new CustomerBuilder().withName("Alice").build()));
+                new CustomerClassContainsKeywordsPredicate(Arrays.asList("Bob", "Carol"));
+        assertFalse(predicate.test(new CustomerBuilder().withName("Alice Carol").build()));
 
         // Non-matching keyword
         predicate = new CustomerClassContainsKeywordsPredicate(Arrays.asList("Carol"));

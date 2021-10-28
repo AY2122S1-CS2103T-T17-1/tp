@@ -163,7 +163,7 @@ public class AddressBookParserTest {
 
     @Test
     public void parseCommand_findEmployee() throws Exception {
-        List<String> keywords = Arrays.asList("goo", "far", "daz");
+        List<String> keywords = Arrays.asList("goo far daz");
         FindEmployeeCommand command = (FindEmployeeCommand) parser.parseCommand(
                 FindEmployeeCommand.COMMAND_WORD + " " + keywords.stream().collect(Collectors.joining(" ")));
         assertEquals(new FindEmployeeCommand(new EmployeeClassContainsKeywordsPredicate(keywords)), command);

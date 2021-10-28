@@ -5,9 +5,6 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.commons.core.Messages.MESSAGE_CUSTOMERS_LISTED_OVERVIEW;
 import static seedu.address.logic.commands.CustomerCommandTestUtil.assertCommandSuccess;
-import static seedu.address.testutil.TypicalCustomers.CUSTOMER_CARL;
-import static seedu.address.testutil.TypicalCustomers.CUSTOMER_ELLE;
-import static seedu.address.testutil.TypicalCustomers.CUSTOMER_FIONA;
 import static seedu.address.testutil.TypicalCustomers.getTypicalAddressBook;
 
 import java.util.Arrays;
@@ -15,9 +12,11 @@ import java.util.Collections;
 
 import org.junit.jupiter.api.Test;
 
+import javafx.collections.ObservableList;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
+import seedu.address.model.person.customer.Customer;
 import seedu.address.model.person.customer.CustomerClassContainsKeywordsPredicate;
 
 /**
@@ -55,23 +54,25 @@ public class FindCustomerCommandTest {
     }
 
     @Test
-    public void execute_zeroKeywords_noPersonFound() {
-        String expectedMessage = String.format(MESSAGE_CUSTOMERS_LISTED_OVERVIEW, 0);
+    public void execute_zeroKeywords_allPersonsFound() {
+        String expectedMessage = String.format(MESSAGE_CUSTOMERS_LISTED_OVERVIEW,
+                model.getFilteredCustomerList().size());
+        ObservableList<Customer> customersList = model.getFilteredCustomerList();
         CustomerClassContainsKeywordsPredicate predicate = preparePredicate(" ");
         FindCustomerCommand command = new FindCustomerCommand(predicate);
         expectedModel.updateFilteredCustomerList(predicate);
         assertCommandSuccess(command, model, expectedMessage, expectedModel);
-        assertEquals(Collections.emptyList(), model.getFilteredCustomerList());
+        assertEquals(customersList, model.getFilteredCustomerList());
     }
 
     @Test
-    public void execute_multipleKeywords_multiplePersonsFound() {
-        String expectedMessage = String.format(MESSAGE_CUSTOMERS_LISTED_OVERVIEW, 3);
+    public void execute_multipleKeywords_multiplePersonsNamesNotFound() {
+        String expectedMessage = String.format(MESSAGE_CUSTOMERS_LISTED_OVERVIEW, 0);
         CustomerClassContainsKeywordsPredicate predicate = preparePredicate("Kurz Elle Kunz");
         FindCustomerCommand command = new FindCustomerCommand(predicate);
         expectedModel.updateFilteredCustomerList(predicate);
         assertCommandSuccess(command, model, expectedMessage, expectedModel);
-        assertEquals(Arrays.asList(CUSTOMER_CARL, CUSTOMER_ELLE, CUSTOMER_FIONA), model.getFilteredCustomerList());
+        assertEquals(Collections.emptyList(), model.getFilteredCustomerList());
     }
 
     /**
